@@ -7,6 +7,10 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.*;
+
 /**
  * Created by jt on 2018-10-29.
  */
@@ -23,5 +27,18 @@ public class AnnotationMocksTest {
     @Test
     void testMock() {
         mapMock.put("keyvalue", "foo");
+
+        when(mapMock.get("keyvalue")).thenReturn("foo");
+        when(mapMock.size()).thenReturn(1);
+
+        assertEquals("foo", mapMock.get("keyvalue"));
+        assertEquals(1, mapMock.size());
+
+        // verify that we call mapMock.put on time
+        verify(mapMock).put(anyString(), anyString());
+
+        mapMock.put("keyvalue2", "foo2");
+        mapMock.put("keyvalue2", "foo3");
+        verify(mapMock, times(3)).put(anyString(), anyString());
     }
 }
