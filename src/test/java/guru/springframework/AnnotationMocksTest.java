@@ -7,8 +7,11 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
 /**
- * Created by jt on 2018-10-29.
+ * Use Annotation to create a mock object.
  */
 public class AnnotationMocksTest {
 
@@ -23,5 +26,11 @@ public class AnnotationMocksTest {
     @Test
     void testMock() {
         mapMock.put("keyvalue", "foo");
+
+        when(mapMock.get("keyvalue")).thenReturn("foo");
+        when(mapMock.size()).thenReturn(1);
+
+        assertEquals("foo", mapMock.get("keyvalue"));
+        assertEquals(1, mapMock.size());
     }
 }
