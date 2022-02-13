@@ -22,6 +22,19 @@ class SpecialitySDJpaServiceTest {
     @InjectMocks
     SpecialitySDJpaService service;
 
+    /**
+     * How to do verification on delete object?
+     */
+    @Test
+    void deleteByObject() {
+        Speciality speciality = new Speciality();
+
+        service.delete(speciality);
+
+        // verify that delete has been called with any object of type Specialty!
+        verify(specialtyRepository).delete(any(Speciality.class));
+    }
+
     @Test
     void findByIdTest() {
         Speciality speciality = new Speciality();
@@ -33,6 +46,7 @@ class SpecialitySDJpaServiceTest {
         assertThat(foundSpecialty).isNotNull();
 
         verify(specialtyRepository).findById(1L);
+        //verify(specialtyRepository).findById(anyLong()); // pass any long
 
     }
 
