@@ -34,11 +34,13 @@ public class AnnotationMocksTest {
         assertEquals("foo", mapMock.get("keyvalue"));
         assertEquals(1, mapMock.size());
 
-        // verify that we call mapMock.put on time
+        // verify that we call mapMock.put method once
         verify(mapMock).put(anyString(), anyString());
 
         mapMock.put("keyvalue2", "foo2");
         mapMock.put("keyvalue2", "foo3");
+
+        // now verify that we call mapMock.put method 3 times
         verify(mapMock, times(3)).put(anyString(), anyString());
     }
 }
