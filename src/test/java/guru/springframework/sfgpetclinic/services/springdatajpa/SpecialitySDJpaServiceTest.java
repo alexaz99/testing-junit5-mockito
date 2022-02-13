@@ -21,6 +21,7 @@ class SpecialitySDJpaServiceTest {
 
     @Test
     void deleteById() {
+        //service = new SpecialitySDJpaService(specialtyRepository);
         service.deleteById(1l);
         service.deleteById(1l);
 
