@@ -8,14 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
 /**
- * Created by jt on 2018-10-29.
+ * Use in line Mockito.mock to create a mock object.
  */
 public class InlineMockTest {
 
     @Test
     void testInlineMock() {
         Map mapMock = mock(Map.class);
-
         assertEquals(mapMock.size(), 0);
     }
 }
