@@ -8,7 +8,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Map;
 
 /**
- * Created by jt on 2018-10-29.
+ * Use @ExtendWith(MockitoExtension.class).
+ * In this case we don't need to have
+ *
+ * @BeforeEach
+ *     void setUp() {
+ *         MockitoAnnotations.initMocks(this);
+ *     }
  */
 @ExtendWith(MockitoExtension.class)
 public class JUnitExtensionTest {
