@@ -4,6 +4,7 @@ import guru.springframework.sfgpetclinic.model.Speciality;
 import guru.springframework.sfgpetclinic.repositories.SpecialtyRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -11,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,6 +31,31 @@ class SpecialitySDJpaServiceTest {
         service.delete(speciality);
 
         verify(specialtyRepository).delete(any(Speciality.class));
+    }
+
+    // given ->
+    // given -> when -> then
+    @Test
+    void findByIdBddTest() {
+        Speciality speciality = new Speciality();
+
+        // TDD
+        // when(specialtyRepository.findById(1L)).thenReturn(Optional.of(speciality));
+
+        //BTT
+        // given
+        //BDDMockito.given
+        given(specialtyRepository.findById(1L)).willReturn(Optional.of(speciality));
+
+        Speciality foundSpecialty = service.findById(1L);
+
+        assertThat(foundSpecialty).isNotNull();
+
+        //verify(specialtyRepository).findById(anyLong());
+        then(specialtyRepository).should().findById(anyLong());
+        then(specialtyRepository).should(times(1)).findById(anyLong());
+        then(specialtyRepository).shouldHaveNoMoreInteractions();
+
     }
 
     @Test
