@@ -46,8 +46,8 @@ class VisitSDJpaServiceBTTTest {
         Set<Visit> foundVisits = service.findAll();
 
         // then
-        assertEquals(1, foundVisits.size());
         then(visitRepository).should().findAll();
+        assertEquals(1, foundVisits.size());
     }
 
     @DisplayName("Test Find By Id")
@@ -62,8 +62,8 @@ class VisitSDJpaServiceBTTTest {
         Visit foundVisit = service.findById(anyLong());
 
         // then
-        assertNotNull(foundVisit);
         then(visitRepository).should().findById(anyLong());
+        assertNotNull(foundVisit);
     }
 
     @DisplayName("Test Save")
@@ -77,8 +77,8 @@ class VisitSDJpaServiceBTTTest {
         Visit returnVisit = service.save(visit);
 
         // then
-        assertNotNull(returnVisit);
         then(visitRepository).should().save(any(Visit.class));
+        assertNotNull(returnVisit);
     }
 
     @DisplayName("Test Delete")
