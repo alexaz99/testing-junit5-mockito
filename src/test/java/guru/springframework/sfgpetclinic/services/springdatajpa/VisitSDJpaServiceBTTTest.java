@@ -5,6 +5,7 @@ import guru.springframework.sfgpetclinic.repositories.VisitRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -17,6 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -32,17 +35,19 @@ class VisitSDJpaServiceBTTTest {
     @DisplayName("Test Find All")
     @Test
     void findAll() {
+
+        // given
         Visit visit = new Visit();
         Set<Visit> visits = new HashSet<>();
         visits.add(visit);
+        given(visitRepository.findAll()).willReturn(visits);
 
-        when(visitRepository.findAll()).thenReturn(visits);
-
+        // when
         Set<Visit> foundVisits = service.findAll();
 
+        // then
         assertEquals(1, foundVisits.size());
-
-        verify(visitRepository).findAll(); // call only once
+        then(visitRepository).should().findAll();
     }
 
     @DisplayName("Test Find By Id")
