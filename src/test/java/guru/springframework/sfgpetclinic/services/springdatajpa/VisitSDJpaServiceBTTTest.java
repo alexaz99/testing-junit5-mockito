@@ -53,50 +53,56 @@ class VisitSDJpaServiceBTTTest {
     @DisplayName("Test Find By Id")
     @Test
     void findById() {
+
+        // given
         Visit visit = new Visit();
+        given(visitRepository.findById(anyLong())).willReturn(Optional.of(visit));
 
-        //when(visitRepository.findById(1L)).thenReturn(Optional.of(visit));
-        when(visitRepository.findById(anyLong())).thenReturn(Optional.of(visit));
-
-        //Visit foundVisit = service.findById(1L);
+        // when
         Visit foundVisit = service.findById(anyLong());
 
+        // then
         assertNotNull(foundVisit);
-
-        // verify that we called findById only once
-        verify(visitRepository).findById(anyLong());
+        then(visitRepository).should().findById(anyLong());
     }
 
     @DisplayName("Test Save")
     @Test
     void save() {
+        // given
         Visit visit = new Visit();
+        given(visitRepository.save(any(Visit.class))).willReturn(visit);
 
-        when(visitRepository.save(any(Visit.class))).thenReturn(visit);
-
+        // when
         Visit returnVisit = service.save(visit);
-        //Visit returnVisit = service.save(any(Visit.class));
 
+        // then
         assertNotNull(returnVisit);
-
-        // verify that we called findById only once
-        verify(visitRepository).save(any(Visit.class));
+        then(visitRepository).should().save(any(Visit.class));
     }
 
     @DisplayName("Test Delete")
     @Test
     void delete() {
+        // given
         Visit visit = new Visit();
+
+        // when
         service.delete(visit);
-        verify(visitRepository).delete(any(Visit.class));
+
+        // then
+        then(visitRepository).should().delete(any(Visit.class));
     }
 
     @DisplayName("Test Delete By Id")
     @Test
     void deleteById() {
-        //service.deleteById(anyLong());
+        // given - none
+
+        // when
         service.deleteById(1L);
 
-        verify(visitRepository).deleteById(anyLong());
+        // then
+        then(visitRepository).should().deleteById(anyLong());
     }
 }
