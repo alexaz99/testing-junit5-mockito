@@ -103,13 +103,17 @@ class SpecialitySDJpaServiceBTTTest {
 
         // then
         then(specialtyRepository).should(atLeastOnce()).deleteById(1L);
-
-        // then
         then(specialtyRepository).should(never()).deleteById(5L);
     }
 
     @Test
     void testDelete() {
+        // given - none
+
+        // when
         service.delete(new Speciality());
+
+        // then
+        then(specialtyRepository).should().delete(any());
     }
 }
