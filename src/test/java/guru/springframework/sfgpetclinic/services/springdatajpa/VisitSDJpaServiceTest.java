@@ -19,6 +19,8 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @ExtendWith(MockitoExtension.class)
 class VisitSDJpaServiceTest {
 
@@ -35,8 +37,15 @@ class VisitSDJpaServiceTest {
         Set<Visit> visits = new HashSet<>();
         visits.add(visit);
         when(visitRepository.findAll()).thenReturn(visits);
+
+        // should return specified set collection with one object set in when method
         Set<Visit> foundVisits = service.findAll();
+
+        // check if the method on mock object was called.
+        // check if the method on mock object was called.
         verify(visitRepository).findAll();
+
+        // return
         assertThat(foundVisits).hasSize(1);
     }
 
