@@ -41,8 +41,7 @@ class VisitSDJpaServiceTest {
         // should return specified set collection with one object set in when method
         Set<Visit> foundVisits = service.findAll();
 
-        // check if the method on mock object was called.
-        // check if the method on mock object was called.
+        // Verify to check if the method on mock object was called.
         verify(visitRepository).findAll();
 
         // return
