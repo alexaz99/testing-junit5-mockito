@@ -1,6 +1,9 @@
 package guru.springframework;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Map;
 
@@ -16,5 +19,14 @@ public class InlineMockTest {
     void testInlineMock() {
         Map mapMock = mock(Map.class);
         assertEquals(mapMock.size(), 0);
+    }
+
+    @ExtendWith(MockitoExtension.class)
+    public static class JUnitExtentionTest {
+
+        @Mock
+        Map<String, Object> mapMock;
+
+
     }
 }
