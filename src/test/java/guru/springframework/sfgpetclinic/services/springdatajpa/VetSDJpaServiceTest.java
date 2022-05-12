@@ -11,6 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+/**
+ * TDD
+ * when => verify
+ */
 @ExtendWith(MockitoExtension.class)
 class VetSDJpaServiceTest {
 
