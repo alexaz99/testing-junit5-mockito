@@ -1,6 +1,7 @@
 package guru.springframework.sfgpetclinic.services.springdatajpa;
 
 import guru.springframework.sfgpetclinic.repositories.SpecialtyRepository;
+import guru.springframework.sfgpetclinic.repositories.VetRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,7 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class VetSDJpaServiceTest {
 
     @Mock
-    private SpecialtyRepository specialtyRepository;
+    private VetRepository vetRepository;
 
     /**
      * when declare this class with @InjectMocks, instance of SpecialitySDJpaService will be
@@ -21,7 +22,7 @@ class VetSDJpaServiceTest {
      * service = new SpecialitySDJpaService(specialtyRepository);
      */
     @InjectMocks
-    private SpecialitySDJpaService service;
+    private VetSDJpaService service;
 
     @Test
     void findAll() {
@@ -45,7 +46,7 @@ class VetSDJpaServiceTest {
     @Test
     void deleteById() {
         service.deleteById(5L);
-        Mockito.verify(specialtyRepository).deleteById(5l);
-        //Mockito.verify(specialtyRepository).deleteById(34l); // this fails because of arg 34l passed!
+        Mockito.verify(vetRepository).deleteById(5l);
+        //Mockito.verify(vetRepository).deleteById(34l); // this fails because of arg 34l passed!
     }
 }
