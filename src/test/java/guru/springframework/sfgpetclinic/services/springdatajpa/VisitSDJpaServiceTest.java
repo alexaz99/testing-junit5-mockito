@@ -34,11 +34,12 @@ class VisitSDJpaServiceTest {
         Set<Visit> visits = new HashSet<>();
         visits.add(visit);
 
+        // when. Specify what we return from a Mock object call
         // 1. create a condition what to return when mocked object
         // visitRepository findAll method is called
         when(visitRepository.findAll()).thenReturn(visits); // need to set when method return something
 
-        // 2. Execute the service method
+        // 2. Execute the service method and it should return the visits object from when
         Set<Visit> foundVisits = visitSDJpaService.findAll();
 
         // 3. Should return 1 item in the collection
