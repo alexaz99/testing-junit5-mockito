@@ -39,7 +39,7 @@ class VisitSDJpaServiceBTTTest {
         // given
         Visit visit = new Visit();
         Set<Visit> visits = new HashSet<>();
-        visits.add(visit);
+        visits.add(visit); // added 1 item
         given(visitRepository.findAll()).willReturn(visits);
 
         // when
@@ -47,6 +47,7 @@ class VisitSDJpaServiceBTTTest {
 
         // then
         then(visitRepository).should().findAll();
+        // Check that foundVisits should have one item in the collection
         assertEquals(1, foundVisits.size());
     }
 
