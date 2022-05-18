@@ -9,7 +9,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.ArgumentMatchers;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -28,6 +33,18 @@ class OwnerControllerTest {
 
     @Mock
     BindingResult bindingResult;
+
+    @Test
+    void processFindFormWildcardsString() {
+        //given
+        Owner owner = new Owner(1L, "Bob", "Black");
+        List<Owner> ownerList = new ArrayList<>();
+        //final ArgumementCaptor
+
+        //when
+
+        //then
+    }
 
     @Test
     void testProcessCreationFormHasErrors() {
