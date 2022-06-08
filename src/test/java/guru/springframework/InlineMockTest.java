@@ -20,13 +20,4 @@ public class InlineMockTest {
         Map mapMock = mock(Map.class);
         assertEquals(mapMock.size(), 0);
     }
-
-    @ExtendWith(MockitoExtension.class)
-    public static class JUnitExtentionTest {
-
-        @Mock
-        Map<String, Object> mapMock;
-
-
-    }
 }
