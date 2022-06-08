@@ -34,7 +34,7 @@ public class AnnotationMocksTest {
         assertEquals("foo", mapMock.get("keyvalue"));
         assertEquals(1, mapMock.size());
 
-        // verify that we call mapMock.put method once
+        // verify that we call mapMock.put method only once. It's default in verify.
         verify(mapMock).put(anyString(), anyString());
 
         mapMock.put("keyvalue2", "foo2");
