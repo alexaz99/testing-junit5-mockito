@@ -33,7 +33,7 @@ class SpecialitySDJpaServiceTest {
 
         Speciality foundSpecialty = service.findById(1L);
 
-        //Assertions.assertThat(foundSpeciality).isNotNull();
+        assertThat(foundSpecialty).isNotNull();
 
         verify(specialtyRepository).findById(1L);
 
