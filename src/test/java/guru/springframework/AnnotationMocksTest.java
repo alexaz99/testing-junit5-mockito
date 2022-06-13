@@ -38,7 +38,7 @@ public class AnnotationMocksTest {
         verify(mapMock).put(anyString(), anyString());
 
         mapMock.put("keyvalue2", "foo2");
-        mapMock.put("keyvalue2", "foo3");
+        mapMock.put("keyvalue3", "foo3");
 
         // now verify that we call mapMock.put method 3 times
         verify(mapMock, times(3)).put(anyString(), anyString());
