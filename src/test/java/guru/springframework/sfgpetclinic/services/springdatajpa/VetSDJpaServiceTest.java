@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.services.springdatajpa;
 
+import guru.springframework.sfgpetclinic.model.Vet;
 import guru.springframework.sfgpetclinic.repositories.SpecialtyRepository;
 import guru.springframework.sfgpetclinic.repositories.VetRepository;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class VetSDJpaServiceTest {
 
+    // This mock object is under the test.
+    // Only one Mock object should be under the test.
     @Mock
     private VetRepository vetRepository;
 
@@ -30,6 +33,12 @@ class VetSDJpaServiceTest {
 
     @Test
     void findById() {
+        //Vet vet = new Vet();
+
+/*        service.findById(Mockito.anyLong());
+        service.findById(Mockito.anyLong());
+        service.findById(Mockito.anyLong());*/
+
     }
 
     @Test
@@ -46,7 +55,8 @@ class VetSDJpaServiceTest {
     @Test
     void deleteById() {
         service.deleteById(5L);
+
+        // verify that we call deleteById with parameter 5L just once.
         Mockito.verify(vetRepository).deleteById(5l);
-        //Mockito.verify(vetRepository).deleteById(34l); // this fails because of arg 34l passed!
     }
 }
