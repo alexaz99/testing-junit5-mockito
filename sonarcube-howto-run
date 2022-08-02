@@ -1,0 +1,52 @@
+SonarQube Installation → Download sonarqube latest version from www.sonarqube.org/downloads
+Unzip it→ goto bin → linux or window or mac (based on operating system) → ./sonar.sh start
+    ./sonar.sh start
+http://localhost:9000
+//-------------------------------------------
+1. Sonarcube local server:
+   C:\sonarqube-9.5.0.56709
+2. start for windows
+ C:\sonarqube-9.5.0.56709\bin\windows-x86-64
+ startSonar.bat
+
+3. Run
+    http://localhost:9000
+    u: admin
+    p: erichka27
+
+
+    project:        testing-junit5-mockito
+    project-key:    testing-junit5-mockito
+    token name:     testing-junit5-mockito
+    token:          sqp_edeace3b2e38dd0106afb4e49a90a65998eb7954
+//-------------------------------------------
+
+mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=testing-junit5-mockito \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.login=sqp_edeace3b2e38dd0106afb4e49a90a65998eb7954
+
+You can use a remote server or a local one on your machine.
+
+If use plugin
+In your IDE go to File -> Settings -> Tools -> SonarQube .
+
+In your IDE go to File -> Settings -> Other Settings -> SonarQube .
+Click Add, enter the address of your Sonar server and the credentials (if needed) and click OK
+(if you use Sonarcloud.io as Sonar server then you need to enter value for Organization).
+
+
+# You can add embabbed somarserver in pom.xml
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.4.0.905</version>
+            </plugin>
+
+Now, we need to execute this command from the root of our project directory to scan it:
+
+mvn sonar:sonar -Dsonar.host.url=http://localhost:9000
+  -Dsonar.login=the-generated-token
+
+Project example
+https://github.com/eugenp/tutorials/tree/master/cas/cas-secured-app
