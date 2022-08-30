@@ -47,7 +47,6 @@ class SpecialitySDJpaServiceTest {
 
         verify(specialtyRepository).findById(1L);
         //verify(specialtyRepository).findById(anyLong()); // pass any long
-
     }
 
     @Test
