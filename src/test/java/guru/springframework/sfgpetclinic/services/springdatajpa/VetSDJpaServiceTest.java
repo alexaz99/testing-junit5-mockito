@@ -50,11 +50,14 @@ class VetSDJpaServiceTest {
     }
 
     /**
-     * verify that mocked method is called once
+     * verify that service.deleteById method is called once
+     * First we create a service instance and inject there
+     * vetRepository Mock object. vetRepository is under the test.
      */
     @Test
     void deleteById() {
         service.deleteById(5L);
+        service.deleteById(Mockito.anyLong()); // use an argument matcher
 
         // verify that we call deleteById with parameter 5L just once.
         Mockito.verify(vetRepository).deleteById(5l);
