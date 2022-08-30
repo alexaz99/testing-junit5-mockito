@@ -29,12 +29,17 @@ class SpecialitySDJpaServiceTest {
     void findByIdTest() {
         Speciality speciality = new Speciality();
 
+        // 1. set what should happen when we call on mock specialtyRepository findById method with argument and
+        // what value should return
         Mockito.when(specialtyRepository.findById(1L)).thenReturn(Optional.of(speciality));
 
+        // 2. Now, execute this method and return expected value
         Speciality foundSpecialty = service.findById(1L);
 
+        // 3. assert the expected value
         assertThat(foundSpecialty).isNotNull();
 
+        // 4. Final step. Here we verify interaction to see how many times the method findById has been called
         verify(specialtyRepository).findById(1L);
 
     }
