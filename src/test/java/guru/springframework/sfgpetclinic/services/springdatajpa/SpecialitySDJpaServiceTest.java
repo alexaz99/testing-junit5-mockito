@@ -35,6 +35,7 @@ class SpecialitySDJpaServiceTest {
         verify(specialtyRepository).delete(any(Speciality.class));
     }
 
+    // Test with Mockito the return object from the Mock SpecialtyRepository method findById
     @Test
     void findByIdTest() {
         Speciality speciality = new Speciality();
