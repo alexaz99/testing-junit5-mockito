@@ -19,6 +19,9 @@ class SpecialitySDJpaServiceTest {
     @Mock
     SpecialtyRepository specialtyRepository;
 
+    // Object under the test. Should be only one.
+    // @InjectMocks will inject all instance @Mock variables in SpecialitySDJpaService,
+    // or via constructor
     @InjectMocks
     SpecialitySDJpaService service;
 
