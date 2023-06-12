@@ -1,7 +1,7 @@
 package guru.springframework;
 
-import com.alex.redgreenrefactory.model.dao.IOrderDao;
-import org.junit.Before;
+/*import com.alex.redgreenrefactory.model.dao.IOrderDao;
+import org.junit.Before;*/
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -193,7 +193,7 @@ public class _2_MockingConcepts {
     @Mock
     Map<String, String> wordMap;
 
-    @Mock
+/*    @Mock
     IOrderDao oderDao;
 
     @Before
@@ -202,7 +202,7 @@ public class _2_MockingConcepts {
         //this.mockOrderDao = mockitoUsage.mock(IOrderDao.class);
         // or better this will mock the OrderDao
         MockitoAnnotations.initMocks(this);
-    }
+    }*/
 
 }
 
